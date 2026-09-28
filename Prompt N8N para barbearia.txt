@@ -1,0 +1,114 @@
+Atue como um especialista em automações utilizando n8n.
+
+Quero criar um workflow no n8n para automatizar o agendamento de horários de uma barbearia por meio do WhatsApp, com integração ao Google Calendar.
+
+Explique detalhadamente:
+
+1. Quais nós do n8n devem ser utilizados.
+2. A função de cada nó.
+3. Como os nós devem ser conectados.
+4. A lógica completa de funcionamento do workflow.
+5. Quais credenciais e integrações precisam ser configuradas.
+6. Como tratar erros, horários indisponíveis e respostas inválidas do cliente.
+7. Como evitar agendamentos duplicados no mesmo horário.
+
+Público responsável:
+Clientes da barbearia.
+
+Ferramentas envolvidas:
+- n8n;
+- WhatsApp;
+- Google Calendar;
+- API de consulta de feriados, caso seja necessária.
+
+Objetivo da automação:
+Permitir que o cliente inicie uma conversa pelo WhatsApp, consulte os horários disponíveis, selecione uma data e um horário e receba a confirmação do agendamento.
+
+Fluxo desejado:
+
+1. O cliente inicia uma conversa pelo WhatsApp.
+2. O workflow identifica a intenção de realizar um agendamento.
+3. O cliente informa ou seleciona a data desejada.
+4. O workflow verifica se a data é válida.
+5. O cliente visualiza os horários disponíveis para aquela data.
+6. O cliente seleciona um horário.
+7. O workflow consulta o Google Calendar para verificar a disponibilidade.
+8. Caso o horário esteja disponível, o evento é criado no Google Calendar.
+9. O cliente recebe uma mensagem de confirmação pelo WhatsApp.
+10. Os barbeiros recebem uma notificação com os dados do novo agendamento.
+11. Caso o horário esteja ocupado, o cliente deve receber outras opções disponíveis.
+12. O workflow é encerrado após a confirmação ou cancelamento da solicitação.
+
+Dados que devem ser solicitados ao cliente:
+- Nome completo;
+- Número de telefone;
+- Serviço desejado;
+- Barbeiro de preferência, quando aplicável;
+- Data desejada;
+- Horário desejado.
+
+Informações que devem ser registradas no Google Calendar:
+- Nome do cliente;
+- Telefone;
+- Serviço solicitado;
+- Nome do barbeiro;
+- Data e horário;
+- Duração estimada do atendimento;
+- Status do agendamento.
+
+Regras importantes:
+- Não permitir agendamentos aos domingos.
+- Não permitir agendamentos em feriados.
+- Utilizar o fuso horário de Brasília, America/Sao_Paulo.
+- Não permitir agendamentos em datas ou horários anteriores ao momento atual.
+- Verificar novamente a disponibilidade antes de criar o evento no Google Calendar.
+- Não criar dois agendamentos para o mesmo barbeiro no mesmo horário.
+- Caso o horário esteja indisponível, apresentar horários alternativos.
+- Validar o formato da data e do horário informados pelo cliente.
+- O agendamento somente deve ser concluído após a confirmação final do cliente.
+- Caso o cliente não responda dentro de um período determinado, encerrar ou pausar o atendimento.
+- Registrar erros e falhas para acompanhamento.
+
+Notificação aos barbeiros:
+Após a confirmação do agendamento, enviar uma mensagem contendo:
+- Nome do cliente;
+- Telefone;
+- Serviço;
+- Data;
+- Horário;
+- Barbeiro responsável;
+- Observações, caso existam.
+
+Estruture a resposta da seguinte forma:
+
+1. Visão geral da solução.
+2. Lista dos nós necessários no n8n.
+3. Função de cada nó.
+4. Sequência de conexão entre os nós.
+5. Explicação passo a passo do workflow.
+6. Lógica para consulta de disponibilidade no Google Calendar.
+7. Lógica para impedir agendamentos aos domingos e feriados.
+8. Tratamento de conflitos e agendamentos duplicados.
+9. Tratamento de erros e respostas inválidas.
+10. Exemplo das mensagens enviadas pelo WhatsApp.
+11. Exemplo da estrutura dos dados processados.
+12. Sugestões de melhorias futuras.
+
+Apresente também um fluxograma textual, como no exemplo:
+
+WhatsApp Trigger
+→ Identificar intenção
+→ Coletar dados do cliente
+→ Validar data
+→ Verificar domingo ou feriado
+→ Consultar Google Calendar
+→ Verificar disponibilidade
+→ Solicitar confirmação
+→ Criar evento
+→ Confirmar ao cliente
+→ Notificar barbeiro
+→ Finalizar workflow
+
+Caso existam diferentes opções de integração com o WhatsApp, explique qual é a mais indicada, apresentando as vantagens, limitações e requisitos de cada solução.
+
+Se alguma informação essencial não tiver sido fornecida, como horário de funcionamento, duração dos serviços, quantidade de barbeiros ou antecedência mínima para agendamento, apresente as configurações recomendadas e deixe esses valores identificados como parâmetros editáveis.
